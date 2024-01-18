@@ -62,6 +62,7 @@ void kill(int targetCoefficient, int targetPower){
     if (current->next == tail){ // pop tail
         Node* tmp = tail;
         tail = current;
+        tail->next = NULL;
         free(tmp);
         return;
     }
@@ -102,6 +103,6 @@ int main(){
     add(7, 1);
     add(1, 0);
 
-    kill(9, 2);
+    kill(1, 0);
     release();
 }
