@@ -1,13 +1,11 @@
 package Utils;
 
 import java.util.HashMap;
-
 import Models.Book;
 import Models.Order;
 import Models.User;
 
 public class DisplayData {
-	
 	public static void displayBooks(HashMap<Integer, Book> books) {
 		for (int i : books.keySet()) {
 			displayBookDetail(books, i);

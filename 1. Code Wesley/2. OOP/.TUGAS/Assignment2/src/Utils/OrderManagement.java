@@ -13,7 +13,6 @@ public class OrderManagement {
 		for (int i : orders.keySet()) {
 			// if user is not unique
 			if (orders.get(i).user.equals(user)) {
-				System.out.println("PING!");
 				orderId = i;
 				orders.get(orderId).books.put(orders.get(orderId).books.size()+1, book);
 				return;
