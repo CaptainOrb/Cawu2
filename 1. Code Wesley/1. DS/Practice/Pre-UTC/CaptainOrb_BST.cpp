@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef char String[64];
 typedef struct Node {
 	int value;
 	struct Node* left;
