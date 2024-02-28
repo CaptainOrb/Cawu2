@@ -51,13 +51,13 @@ Node* getPredecessor(Node* target){
 }
 
 Node* getParent(Node* targetNode, Node* parent = root){
+	if (parent == NULL) return NULL;
 	if (targetNode == parent->left || targetNode == parent->right)
 		return parent;
 	if (targetNode->value < parent->value)
 		return getParent(targetNode, parent->left);
 	if (targetNode->value > parent->value)
 		return getParent(targetNode, parent->right);
-	return NULL;
 }
 
 void remove(Node* target, Node* parent){
@@ -73,19 +73,15 @@ void remove(Node* target, Node* parent){
 			parent->right = NULL;
 		}
 		count--;
+		return;
 	}
-	else if (target->left == NULL || target->right == NULL){
+	else if (target->left == NULL || target->right == NULL)
 		Node* del = target->left? target->left : target->right;
-		int copy = del->value;
-		remove(del, getParent(del));
-		target->value = copy;
-	}
-	else {
-		Node* del = getPredecessor(target);
-		int copy = del->value;
-		remove(del, getParent(del));
-		target->value = copy;
-	}
+	else Node* del = getPredecessor(target);
+	
+	int copy = del->value;
+	remove(del, getParent(del));
+	target->value = copy;
 }
 
 void release(Node* current = root){
